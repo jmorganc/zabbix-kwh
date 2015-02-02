@@ -6,7 +6,7 @@ import time
 
 
 def main():
-    FILES = ('15m', 'daily', 'monthly')
+    FILES = ['15m', 'daily', 'monthly']
     ZABBIX_HOST = 'Bespin'
 
     for file in FILES:
@@ -21,6 +21,8 @@ def main():
                 elif file == 'daily':
                     for esiid, date, reading_start, reading_end, kwh in meter_csv_obj:
                         timestamp = time.mktime(time.strptime(date, '%m/%d/%Y'))
+                        if not kwh:
+                            kwh = 0
                         txt_out.write('Bespin house.kwh.{file} {timestamp} {kwh}\n'.format(file=file, timestamp=timestamp, kwh=kwh))
                 elif file == 'monthly':
                     for esiid, date_start, date, kwh, kwh_m, kwh_b, kva_m, kva_b in meter_csv_obj:
