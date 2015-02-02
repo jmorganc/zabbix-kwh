@@ -1,6 +1,6 @@
 # zabbix-kwh
-zabbix_sender -z <host> -i IntervalMeterUsage_<int>.txt -T -v
+zabbix_sender -z (host) -i IntervalMeterUsage_(interval).txt -T -v
 
 # TODO
-Automate download
-Check for stale data
+* Automate download
+* Check for stale data
